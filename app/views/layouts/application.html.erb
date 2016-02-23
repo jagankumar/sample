@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+      <div class="header" id="header">
+        <h1 class="site_title" id="site_title">Sample</h1>
+        <ul class="header-item tabs" id="tabs">
+           
+         <%if  employee_signed_in? and current_employee.role == "Employee"%>
+          <li><%= link_to  "New activity",   new_activity_path %></li>
+          <li><%= link_to  "Show my activities",  @activity %></li>
+          <li><%= link_to('Logout', destroy_employee_session_path, :method => :delete) %></li>
+          <%else%>
+          <li><%= link_to('Login', new_employee_session_path)%> </li>
+          <li id="activities"><a href="/admin/activities">Activities</a></li>
+          <li id="admin_users"><a href="/admin/admin_users">Admin Login</a></li>
+          <li id="tasks"><a href="/admin/tasks">Tasks</a></li>
+          <li id="tasks"><a href="/admin/employees">Employees</a></li>
+           
+          <%end%>
+        </ul>
+        
+      </div>
+<%= yield %>
+
+
+</body>
+</html>

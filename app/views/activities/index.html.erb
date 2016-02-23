@@ -1,0 +1,14 @@
+<h1>Listing activities</h1>
+<% @activities.each do |activity| %>
+<tr>
+<td><strong>Date: </strong><%= current_employee.activity.date %><br></td>
+<td><strong>Description: </strong><%= current_employee.activity.description %></td>
+<td><%= link_to 'Edit', edit_activity_path %></td>
+<td><%= link_to 'Destroy', activity_path(activity),
+              method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+<% end %>
+
+<%#= link_to 'New activity', new_activity_path %>
+<%#= link_to 'Edit', edit_activity_path %>
